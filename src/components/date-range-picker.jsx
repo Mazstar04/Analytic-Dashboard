@@ -27,15 +27,15 @@ function DateRangePicker({ selectedDateRange, setSelectedDateRange }) {
 
     return (
         <div className=''>
-            <div className='flex items-center gap-2'>
-                <button onClick={toggleDatePicker} className='text-[12px] font-[500] dark:text-gray-300 text-[#787486] '>{!hasSelectedDate ? "Weekly" : `${moment(selectedDateRange.startDate).format('MMM D, YYYY')} - ${moment(selectedDateRange.endDate).format('MMM D, YYYY')}`}</button>
+            <button onClick={toggleDatePicker} className='flex items-center gap-2'>
+                <div className='text-[12px] font-[500] dark:text-gray-300 text-[#787486] '>{!hasSelectedDate ? "Weekly" : `${moment(selectedDateRange.startDate).format('MMM D, YYYY')} - ${moment(selectedDateRange.endDate).format('MMM D, YYYY')}`}</div>
                 <Image
                     width={12}
                     height={7}
                     src={`/assets/icons${darkMode ? "/dark" : ""}/down-arrow.svg`}
                     alt="arrow"
                 />
-            </div>
+            </button>
             {isDatePickerVisible && (
                 <div className='absolute z-20 right-0'>
                     <DateRange
