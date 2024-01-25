@@ -80,7 +80,7 @@ const SalesTrend = () => {
                 <span className="text-[#26282C] font-[600]">Sales Trend</span>
                 <div className="flex items-center gap-2">
                     <span className="text-[14px] text-[#3A3F51] font-[500]">Sort by:</span>
-                    <select defaultValue={1} name="" id="" className="border-[1px] border-[#E1DFDF] rounded-[20px] p-2 text-[12px] text-[#3A3F51] outline-none">
+                    <select defaultValue={1} name="" id="" className="border-[1px] border-[#E1DFDF] bg-white rounded-[20px] p-2 text-[12px] text-[#3A3F51] outline-none">
                         {
                             ["Weekly", "Monthly", "Yearly"].map((f, index) =>
 
