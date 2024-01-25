@@ -9,7 +9,7 @@ const Aggregate = () => {
             value: 350,
             percentage: 23.5,
             isIncrease: true,
-            iconRoute: "order.svg"
+            iconPath: "order.svg"
         },
         {
             id: 2,
@@ -17,7 +17,7 @@ const Aggregate = () => {
             value: 270,
             percentage: 23.5,
             isIncrease: false,
-            iconRoute: "refund.svg",
+            iconPath: "refund.svg",
         },
         {
             id: 1,
@@ -25,7 +25,7 @@ const Aggregate = () => {
             value: 1567,
             percentage: 23.5,
             isIncrease: false,
-            iconRoute: "sales.svg",
+            iconPath: "sales.svg",
         },
         {
             id: 1,
@@ -33,7 +33,7 @@ const Aggregate = () => {
             value: "$350.000",
             percentage: 23.5,
             isIncrease: true,
-            iconRoute: "income.svg"
+            iconPath: "income.svg"
         },
 
     ]

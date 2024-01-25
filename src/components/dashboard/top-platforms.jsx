@@ -36,10 +36,12 @@ const TopPlatForm = () => {
         },
 
     ]
+
+    
     return (
-        <div className="w-full h-auto rounded-[8px] py-4  px-6 bg-white">
+        <div className="w-full h-auto rounded-[8px] py-4  px-6 dark:bg-gray-800 bg-white">
             <div className="flex items-center justify-between text-[18px]">
-                <span className="text-[#26282C] font-[600]">Top Platform</span>
+                <span className="dark:text-gray-300 text-[#26282C] font-[600]">Top Platform</span>
                 <Link href="#" className="text-[#34CAA5] font-[500]">
                     See All
                 </Link>
@@ -48,17 +50,17 @@ const TopPlatForm = () => {
                 {
                     platforms.map((p, index) =>
                         <div key={p.id * 30} className="flex flex-col gap-3">
-                            <span className="text-[18px] text-[#22242C] font-[600]">{p.name}</span>
+                            <span className="text-[18px] dark:text-gray-300 text-[#22242C] font-[600]">{p.name}</span>
                             <div className="w-full h-[12px] rounded-[40px] bg-[#F5F5F5]">
                                 <div
                                     style={{
                                         width: `${p.percentage}%`,
                                         backgroundImage: `linear-gradient(270deg, ${p.color} 0%, ${p.color} 30%)`,
                                     }}
-                                    className="flex flex-col text-center h-full whitespace-nowrap text-white justify-center rounded-[40px]"
+                                    className="flex flex-col text-center h-full whitespace-nowrap dark:text-black text-white justify-center rounded-[40px]"
                                 ></div>
                             </div>
-                            <div className="flex items-center justify-between text-[18px] text-[#525252]">
+                            <div className="flex items-center justify-between text-[18px] dark:text-gray-300 text-[#525252]">
                                 <span>${p.amountRaised.toLocaleString()}</span>
                                 <span>+{p.increase}</span>
                             </div>

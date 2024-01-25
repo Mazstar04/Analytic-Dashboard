@@ -1,6 +1,8 @@
 'use client';
+import { useDarkModeContext } from '@/containers/dark-mode-provider';
 import { useState } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Cell } from 'recharts';
+import DateRangePicker from '../date-range-picker';
 
 const CustomTooltip = ({ active, payload, label }) => {
     if (active) {
@@ -73,21 +75,22 @@ const SalesTrend = () => {
     const formatYAxisTick = (value) => {
         return (value + 1).toFixed(2);
     };
+    const [selectedDateRange, setSelectedDateRange] = useState({
+        startDate: '',
+        endDate: '',
+        key: 'selection',
+    });
+
+    const { darkMode } = useDarkModeContext();
 
     return (
-        <div className="w-full h-full rounded-[14px] p-4 bg-white border-[1px] border-[#EDF2F7] flex flex-col gap-4">
+        <div className="w-full h-full rounded-[14px] p-4 dark:bg-gray-800 bg-white border-[1px] dark:border-gray-700 border-[#EDF2F7] flex flex-col gap-4">
             <div className="flex items-center justify-between text-[18px]">
-                <span className="text-[#26282C] font-[600]">Sales Trend</span>
+                <span className="dark:text-gray-300 text-[#26282C] font-[600]">Sales Trend</span>
                 <div className="flex items-center gap-2">
-                    <span className="text-[14px] text-[#3A3F51] font-[500]">Sort by:</span>
-                    <select defaultValue={1} name="" id="" className="border-[1px] border-[#E1DFDF] bg-white rounded-[20px] p-2 text-[12px] text-[#3A3F51] outline-none">
-                        {
-                            ["Weekly", "Monthly", "Yearly"].map((f, index) =>
-
-                                <option key={index * 50} value={index + 1} selected={index == 0} className="text-[12px] text-[#3A3F51]">{f}</option>
-                            )
-                        }
-                    </select>
+                    <span className="text-[14px] dark:text-gray-300 text-[#3A3F51] font-[500]">Sort by:</span>
+                    <div className="border-[1px] dark:border-gray-700 border-[#E1DFDF] dark:bg-gray-800 bg-white rounded-[20px] p-2 text-[12px] dark:text-gray-300 text-[#3A3F51] relative"><DateRangePicker selectedDateRange={selectedDateRange} setSelectedDateRange={setSelectedDateRange} />
+                    </div>
                 </div>
             </div>
             <div className="flex-1">
@@ -102,16 +105,16 @@ const SalesTrend = () => {
                             }
                         }}
                     >
-                        <CartesianGrid vertical={false} strokeDasharray="6 6" stroke="#EAEAEA" />
+                        <CartesianGrid vertical={false} strokeDasharray="6 6" stroke={`${darkMode ? "#525252" : " #EAEAEA"}`} />
                         <XAxis
                             dataKey="month"
-                            tick={{ fontSize: 14, fill: '#525252', fontWeight: 600 }}
+                            tick={{ fontSize: 14, fill: `${darkMode ? "#fff" : "#525252"}`, fontWeight: 600 }}
                             axisLine={false}
                             tickLine={false}
                         />
                         <YAxis
                             tickFormatter={formatYAxisTick}
-                            tick={{ fontSize: 12, fill: '#525252' }}
+                            tick={{ fontSize: 12, fill: `${darkMode ? "#fff" : "#525252"}` }}
                             tickCount={7}
                             minTickGap={5}
                             axisLine={false}
@@ -123,7 +126,7 @@ const SalesTrend = () => {
                             {data.map((entry, index) => (
                                 <Cell
                                     key={`cell-${index}`}
-                                    fill={focusBar === index ? 'url(#gradient)' : '#34CAA51A'}
+                                    fill={focusBar === index ? 'url(#gradient)' : `${darkMode ? "#34caa455" : "#34CAA51A"}`}
                                     onMouseEnter={() => setFocusBar(index)}
                                     onMouseLeave={() => setFocusBar(null)}
                                     radius={[50, 50, 0, 0]}

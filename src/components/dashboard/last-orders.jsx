@@ -1,3 +1,5 @@
+"use client";
+import { useDarkModeContext } from "@/containers/dark-mode-provider";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -47,10 +49,11 @@ const LastOrders = () => {
         },
 
     ]
+    const { darkMode } = useDarkModeContext();
     return (
-        <div className="w-full h-auto rounded-[14px] p-4 bg-white border-[1px] border-[#EDF2F7] flex flex-col gap-6">
+        <div className="w-full h-auto rounded-[14px] p-4 dark:bg-gray-800 bg-white border-[1px] dark:border-gray-700 border-[#EDF2F7] flex flex-col gap-6">
             <div className="flex items-center justify-between text-[18px]">
-                <span className="text-[#26282C] font-[600]">Last Orders</span>
+                <span className="dark:text-gray-300 text-[#26282C] font-[600]">Last Orders</span>
                 <Link href="#" className="text-[#34CAA5] font-[500]">
                     See All
                 </Link>
@@ -59,28 +62,28 @@ const LastOrders = () => {
                 <div className="flex mb-6">
                     {
                         headers.map((h, index) =>
-                            <span key={h.id * 35} className={`text-[16px] text-[#9CA4AB] font-[500] ${index == 0 ? "basis-[35%] " : h !== "Invoice" ? "flex-1" : ""}`}>{h}</span>
+                            <span key={h.id * 35} className={`text-[16px] dark:text-gray-300 text-[#9CA4AB] font-[500] ${index == 0 ? "basis-[35%] " : h !== "Invoice" ? "flex-1" : ""}`}>{h}</span>
                         )
                     }
                 </div>
                 {
                     data.map((d, index) =>
-                        <div key={d.index * 60} className="flex text-[16px] border-t-[1px] border-[#EDF2F6] h-[70px] items-center">
+                        <div key={d.index * 60} className="flex text-[16px] border-t-[1px] dark:border-gray-800 border-[#EDF2F6] h-[70px] items-center">
                             <div className="basis-[35%] flex items-center gap-2">
                                 <div className="w-[32px] h-[32px] rounded-[50%] bg-center bg-no-repeat bg-cover" style={{ backgroundImage: `url('/assets/images/${d.imagePath}')` }}></div>
-                                <span className="text-[#3A3F51] font-[500]">{d.name}</span>
+                                <span className="dark:text-gray-200 text-[#3A3F51] font-[500]">{d.name}</span>
                             </div>
-                            <span className="flex-1  text-start text-[#737373]">{d.date}</span>
-                            <span className="flex-1 text-start text-[#0D062D] font-[500]">${d.amount.toLocaleString()}</span>
+                            <span className="flex-1 text-start dark:text-gray-300 text-[#737373]">{d.date}</span>
+                            <span className="flex-1 text-start dark:text-white text-[#0D062D] font-[500]">${d.amount.toLocaleString()}</span>
                             <span className={`flex-1 ${d.status.toLowerCase() == "paid" ? "text-[#34CAA5]" : "text-[#ED544E]"}`}>{d.status}</span>
                             <button className=" flex items-center gap-1">
                                 <Image
                                     width={16}
                                     height={16}
-                                    src={`/assets/icons/view.svg`}
+                                    src={`/assets/icons${darkMode ? "/dark" : ""}/view.svg`}
                                     alt="view invoice"
                                 />
-                                <span className="text-[14px] text-[#0D062D]">View</span>
+                                <span className="text-[14px] dark:text-gray-300 text-[#0D062D]">View</span>
                             </button>
                         </div>
                     )
