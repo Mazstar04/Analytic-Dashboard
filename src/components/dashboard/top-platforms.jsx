@@ -51,7 +51,7 @@ const TopPlatForm = () => {
                     platforms.map((p, index) =>
                         <div key={p.id * 30} className="flex flex-col gap-3">
                             <span className="text-[18px] dark:text-gray-300 text-[#22242C] font-[600]">{p.name}</span>
-                            <div className="w-full h-[12px] rounded-[40px] bg-[#F5F5F5]">
+                            <div className="w-full h-[12px] rounded-[40px] dark:bg-gray-600 bg-[#F5F5F5]">
                                 <div
                                     style={{
                                         width: `${p.percentage}%`,
