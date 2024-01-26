@@ -69,7 +69,7 @@ const LastOrders = () => {
                 </div>
                 {
                     data.map((d, index) =>
-                        <div key={d.index * 60} className="flex text-[16px] border-t-[1px] dark:border-gray-800 border-[#EDF2F6] h-[70px] items-center">
+                        <div key={d.index * 60} className="flex text-[16px] border-t-[1px] dark:border-gray-900 border-[#EDF2F6] h-[70px] items-center">
                             <div className="basis-[35%] flex items-center gap-2">
                                 <div className="w-[32px] h-[32px] rounded-[50%] bg-center bg-no-repeat bg-cover" style={{ backgroundImage: `url('/assets/images/${d.imagePath}')` }}></div>
                                 <span className="dark:text-gray-200 text-[#3A3F51] font-[500]">{d.name}</span>
