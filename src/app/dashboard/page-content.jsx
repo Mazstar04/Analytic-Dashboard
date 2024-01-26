@@ -11,7 +11,7 @@ const PageContent = () => {
                 <div className="md:basis-[40%] "><Aggregate /></div>
             </div>
             <div className="flex flex-col lg:flex-row gap-6 ">
-                <div className="hidden md:block lg:flex-1 h-auto"><LastOrders/></div>
+                <div className="lg:flex-1 h-auto"><LastOrders/></div>
                 <div className="md:basis-[40%] "><TopPlatForm /></div>
             </div>
         </div>

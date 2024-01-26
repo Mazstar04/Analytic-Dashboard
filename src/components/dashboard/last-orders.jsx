@@ -51,14 +51,15 @@ const LastOrders = () => {
     ]
     const { darkMode } = useDarkModeContext();
     return (
-        <div className="w-full h-auto rounded-[14px] p-4 dark:bg-gray-800 bg-white border-[1px] dark:border-gray-700 border-[#EDF2F7] flex flex-col gap-6">
+        <div className="w-full h-auto rounded-[14px] p-4 dark:bg-gray-800 bg-white border-[1px] dark:border-gray-700 border-[#EDF2F7] flex flex-col gap-6 ">
             <div className="flex items-center justify-between text-[18px]">
                 <span className="dark:text-gray-300 text-[#26282C] font-[600]">Last Orders</span>
                 <Link href="#" className="text-[#34CAA5] font-[500]">
                     See All
                 </Link>
             </div>
-            <div className="flex flex-col">
+            <div className="max-w-[75vw] md:max-w-full overflow-x-auto ">
+                <div className=" flex flex-col overflow-x-auto table-fancy-scrollbar w-[700px] md:w-full ">
                 <div className="flex mb-6">
                     {
                         headers.map((h, index) =>
@@ -89,6 +90,8 @@ const LastOrders = () => {
                     )
                 }
             </div>
+            </div>
+            {/*  */}
         </div>
     );
 }
